@@ -1,0 +1,86 @@
+@import '../node_modules/primeng/resources/themes/mdc-light-indigo/theme.css';
+@import '../node_modules/primeng/resources/primeng.min.css';
+@import '../node_modules/primeicons/primeicons.css';
+
+body {
+    margin: 0;
+    padding: 0;
+}
+
+.p-datatable .p-datatable-thead > tr > th {
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0px;
+}
+
+.p-datatable-scrollable-body {
+    min-height: calc(100vh - 110px);
+}
+
+.p-paginator-bottom {
+    position: -webkit-sticky;
+    position: sticky;
+    bottom: 0px;
+}
+
+.ellipsis {
+    width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.p-button-icon-only {
+    height: 32px!important;
+    width: 32px!important;
+    position: relative;
+    overflow: visible;
+
+    &:hover {
+        .dropdown-menu {
+            display: block;
+        }
+    }
+}
+
+.dropdown-menu {
+    display: none;
+    position: absolute;
+    top: 20px;
+    left: 0;
+    width: 200px;
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0px 0px 3px #ccc;
+    padding: 10px;
+    z-index: 10000;
+
+    ul {
+        padding: 0;
+        margin: 0;
+        text-align: left;
+
+        li {
+            list-style: none;
+            padding: 4px 8px;
+            border-radius: 5px;
+            height: 32px;
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+
+            &.disabled {
+                pointer-events: none;
+            }
+
+            label {
+                cursor: pointer;
+            }
+
+            &:hover {
+                background-color: #0366d6;
+                color: #fff;
+            }
+        }
+    }
+}

@@ -1,0 +1,47 @@
+<!-- {{gridData.length}} -->
+
+<p-table #dt [value]="gridData" dataKey="id" [rowHover]="true" [rows]="25" [showCurrentPageReport]="true"
+  [rowsPerPageOptions]="[10,25,50, 100, 250, 500]" [loading]="loading" [paginator]="true" paginatorDropdownAppendTo="body"
+  currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [scrollable]="true" scrollHeight="calc(100vh - 110px)">
+  <ng-template pTemplate="header">
+    <tr>
+      <th style="width: 80px;"></th>
+      <th *ngFor="let col of column" [style.width]="col.width" [pSortableColumn]="col.field">
+        {{col.name}}
+        <p-sortIcon [field]="col.field"></p-sortIcon>
+      </th>
+    </tr>
+  </ng-template>
+  <ng-template pTemplate="body" let-customer>
+    <tr class="p-selectable-row">
+      <td style="width: 80px;">
+        <button pButton pRipple type="button" icon="pi pi-ellipsis-v" class="p-button-rounded p-button-outlined" (mouseover)="selectedRowId = customer.id">
+          <ng-container *ngTemplateOutlet="contextMenu; context: {$implicit: customer.id, name: 'Susobhan'}"></ng-container>
+        </button>
+      </td>
+      <td *ngFor="let col of column">
+        <!-- <span class="p-column-title">{{col.name}}</span> -->
+        <div class="ellipsis">{{customer[col.field]}}</div>
+      </td>
+    </tr>
+  </ng-template>
+</p-table>
+
+<ng-template #contextMenu let-id>
+  <div class="dropdown-menu" *ngIf="selectedRowId === id">
+    <ul>
+      <li (click)="menuClicked(id)">
+        <label>Click Me</label>
+      </li>
+      <li class="disabled">
+        <label>No need to Click Me</label>
+      </li>
+      <li class="disabled">
+        <label>Neither for me</label>
+      </li>
+      <li class="disabled">
+        <label>Please Don't</label>
+      </li>
+    </ul>
+  </div>
+</ng-template>
